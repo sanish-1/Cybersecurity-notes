@@ -1,0 +1,101 @@
+******KALI******
+-NAVIGATING THE FILE SYSTEM 
+#pwd==>present work directory
+#cd ==> change directory 
+#cd .. ==> back
+#/ ==> it helps to change things without going back /cd
+#whoami==>helps to see which user you are
+#mkdir==>make directory
+#rmdir==> remove directory
+#ls -la ==> see hidden folder
+#cp ==>copy file 
+#mv==> move file 
+#locate==>helps to locate
+#updatedb==>update database
+#passwd==>change password
+#man==>its help to know what command is use too do what activities
+#ping==> to see host is  online or not
+#chmod==>change mode
+
+
+***User privilage*** 
+#owner
+ls -la(breakdown)
+drwxr -xr-x
+c ==> file 
+cd ==> direcctories
+(rwx)==> read write execute
+#secound owner
+(rx)==>team work secound owner they can read only 
+#user
+rx ==> read and execute (user)
+
+***Update***
+apt upgrade==> yo upgrade 
+apt update ==> to upgrade 
+tooo do both you have too doo ==> apt upgrade && apt update 
+
+***Using Vim***
+VIm=> to make file 
+insert==> TO write 
+ese ==>to come back
+:wq==> to come back to the terminal 
+
+***TO rename***
+mv(filename) (rename name )
+
+***Systemcommand***
+systemctl start Network Manager 
+
+***Command network command***
+ifconfig 
+arp -a ==> it helps to know ip address and mac address 
+
+***Installing tools
+apt install
+git clone (copy paste )
+
+LInux
+id ==> helps to find old,gid,group(id card jastaiii)
+tourch==> TO make file
+-n == helps to get number 
+-c1 ==>first bytes only
+-n1==>show first line only
+tail -cl ===>show last line 
+~===> how directory 
+
+|   |
+|---|
+|[chmod 775 _file_](http://unixhelp.ed.ac.uk/CGI/man-cgi?chmod)<br><br>Change mode of _file_ to 775|
+|[chmod -R 600 _folder_](http://unixhelp.ed.ac.uk/CGI/man-cgi?chmod)<br><br>Recurs­ively chmod _folder_ to 600|
+|[chown _user_:_group_ _file_](http://unixhelp.ed.ac.uk/CGI/man-cgi?chown)<br><br>Change _file_ owner to _user_ and group to _group_|
+
+![[Pasted image 20260527064347.png]]
+The `chmod` command is used to change the permissions of a file or directory
+rwx rwx rwx = 111 111 111
+rw- rw- rw- = 110 110 110
+rwx --- --- = 111 000 000
+
+and so on...
+
+rwx = 111 in binary = 7
+rw- = 110 in binary = 6
+r-x = 101 in binary = 5
+r-- = 100 in binary = 4
+
+|           |                                                                                                                                                                                                           |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Value** | **Meaning**                                                                                                                                                                                               |
+| **777**   | **(rwxrwxrwx)** No restrictions on permissions. Anybody may do anything. Generally not a desirable setting.                                                                                               |
+| **755**   | **(rwxr-xr-x)** The file's owner may read, write, and execute the file. All others may read and execute the file. This setting is common for programs that are used by all users.                         |
+| **700**   | **(rwx------)** The file's owner may read, write, and execute the file. Nobody else has any rights. This setting is useful for programs that only the owner may use and must be kept private from others. |
+| **666**   | **(rw-rw-rw-)** All users may read and write the file.                                                                                                                                                    |
+| **644**   | **(rw-r--r--)** The owner may read and write a file, while all others may only read the file. A common setting for data files that everybody may read, but only the owner may change.                     |
+| **600**   | **(rw-------)** The owner may read and write a file. All others have no rights. A common setting for data files that the owner wants to keep private.                                                     |
+
+
+(manual page )
+man <command>
+View the man page for a command.
+man -k <search term>
+Search for man pages containing the search term.
