@@ -1,0 +1,407 @@
+# 🌐 Networking Notes
+
+## Introduction
+
+Networking is the practice of connecting computers and devices to share data and resources. It is one of the fundamental concepts in Cybersecurity, System Administration, and IT Infrastructure.
+
+---
+
+# 1. What is a Network?
+
+A network is a collection of interconnected devices that communicate with each other.
+
+### Examples:
+
+* Internet
+* Home Wi-Fi Network
+* Office Network
+* Data Center Network
+
+---
+
+# 2. Types of Networks
+
+### PAN (Personal Area Network)
+
+* Covers a small area.
+* Example: Bluetooth connection between phone and earbuds.
+
+### LAN (Local Area Network)
+
+* Covers a limited area such as a home, office, or school.
+* High speed and low latency.
+
+### MAN (Metropolitan Area Network)
+
+* Covers a city or metropolitan area.
+
+### WAN (Wide Area Network)
+
+* Covers large geographical areas.
+* Example: The Internet.
+
+---
+
+# 3. Network Devices
+
+### Router
+
+* Connects different networks.
+* Routes data packets between networks.
+
+### Switch
+
+* Connects devices within the same network.
+* Uses MAC addresses.
+
+### Hub
+
+* Broadcasts data to all connected devices.
+
+### Modem
+
+* Connects a local network to an ISP.
+
+### Access Point (AP)
+
+* Provides wireless connectivity.
+
+### Firewall
+
+* Monitors and filters incoming and outgoing traffic.
+
+---
+
+# 4. IP Address
+
+An IP Address uniquely identifies a device on a network.
+
+### IPv4
+
+Example:
+192.168.1.1
+
+### IPv6
+
+Example:
+2001:db8::ff00:42:8329
+
+---
+
+# 5. Public vs Private IP
+
+### Public IP
+
+* Assigned by ISP.
+* Accessible from the internet.
+
+### Private IP
+
+Used inside local networks.
+
+Ranges:
+
+* 10.0.0.0 – 10.255.255.255
+* 172.16.0.0 – 172.31.255.255
+* 192.168.0.0 – 192.168.255.255
+
+---
+
+# 6. MAC Address
+
+* Unique hardware address of a network interface.
+* Operates at Layer 2 of the OSI Model.
+
+Example:
+00:1A:2B:3C:4D:5E
+
+---
+
+# 7. OSI Model
+
+### Layer 7 – Application
+
+HTTP, HTTPS, FTP, SMTP
+
+### Layer 6 – Presentation
+
+Encryption, Compression
+
+### Layer 5 – Session
+
+Session Management
+
+### Layer 4 – Transport
+
+TCP, UDP
+
+### Layer 3 – Network
+
+IP Routing
+
+### Layer 2 – Data Link
+
+MAC Addressing
+
+### Layer 1 – Physical
+
+Cables, Signals
+
+---
+
+# 8. TCP/IP Model
+
+### Application Layer
+
+HTTP, HTTPS, FTP, DNS
+
+### Transport Layer
+
+TCP, UDP
+
+### Internet Layer
+
+IP
+
+### Network Access Layer
+
+Ethernet, Wi-Fi
+
+---
+
+# 9. TCP vs UDP
+
+## TCP
+
+* Connection-oriented
+* Reliable
+* Error checking
+* Slower
+
+Examples:
+
+* HTTPS
+* FTP
+* SSH
+
+## UDP
+
+* Connectionless
+* Faster
+* No guarantee of delivery
+
+Examples:
+
+* DNS
+* VoIP
+* Online Gaming
+
+---
+
+# 10. Common Ports
+
+| Port  | Protocol | Service |
+| ----- | -------- | ------- |
+| 20/21 | TCP      | FTP     |
+| 22    | TCP      | SSH     |
+| 23    | TCP      | Telnet  |
+| 25    | TCP      | SMTP    |
+| 53    | TCP/UDP  | DNS     |
+| 80    | TCP      | HTTP    |
+| 110   | TCP      | POP3    |
+| 143   | TCP      | IMAP    |
+| 443   | TCP      | HTTPS   |
+| 445   | TCP      | SMB     |
+| 3389  | TCP      | RDP     |
+
+---
+
+# 11. DNS (Domain Name System)
+
+Converts domain names into IP addresses.
+
+Example:
+
+google.com → 142.250.x.x
+
+Common DNS Records:
+
+* A Record
+* AAAA Record
+* MX Record
+* TXT Record
+* CNAME Record
+
+---
+
+# 12. DHCP
+
+Dynamic Host Configuration Protocol
+
+Functions:
+
+* Assigns IP Addresses
+* Assigns Gateway
+* Assigns DNS Server
+
+---
+
+# 13. NAT
+
+Network Address Translation
+
+Purpose:
+
+* Converts private IP addresses into public IP addresses.
+* Conserves IPv4 addresses.
+
+---
+
+# 14. Important Networking Commands
+
+## Windows
+
+```cmd
+ipconfig
+ping
+tracert
+netstat
+nslookup
+arp -a
+```
+
+## Linux
+
+```bash
+ifconfig
+ip a
+ping
+netstat
+ss
+route
+traceroute
+arp
+```
+
+---
+
+# 15. Subnetting Basics
+
+Subnet Mask Example:
+
+```text
+255.255.255.0
+```
+
+CIDR Notation:
+
+```text
+192.168.1.0/24
+```
+
+Common CIDR:
+
+| CIDR | Subnet Mask     |
+| ---- | --------------- |
+| /8   | 255.0.0.0       |
+| /16  | 255.255.0.0     |
+| /24  | 255.255.255.0   |
+| /32  | 255.255.255.255 |
+
+---
+
+# 16. Network Security Basics
+
+### Firewall
+
+Filters traffic.
+
+### IDS
+
+Intrusion Detection System.
+
+### IPS
+
+Intrusion Prevention System.
+
+### VPN
+
+Encrypts network traffic.
+
+### SIEM
+
+Security Information and Event Management.
+
+---
+
+# 17. Cybersecurity-Relevant Protocols
+
+### SSH (22)
+
+Secure remote access.
+
+### HTTPS (443)
+
+Secure web browsing.
+
+### DNS (53)
+
+Domain resolution.
+
+### SMB (445)
+
+File sharing.
+
+### RDP (3389)
+
+Remote Desktop.
+
+---
+
+# 18. Packet Flow
+
+1. Application creates data.
+2. Data is encapsulated.
+3. Packet reaches router.
+4. Router forwards packet.
+5. Destination receives packet.
+6. Data is decapsulated.
+
+---
+
+# Quick Revision
+
+✔ OSI Model = 7 Layers
+✔ TCP/IP Model = 4 Layers
+✔ TCP = Reliable
+✔ UDP = Fast
+✔ DNS = Name Resolution
+✔ DHCP = IP Assignment
+✔ NAT = Private to Public Translation
+✔ Router = Connects Networks
+✔ Switch = Connects Devices
+✔ Firewall = Filters Traffic
+
+---
+
+## Recommended Networking Tools
+
+* Wireshark
+* Nmap
+* Netcat
+* Tcpdump
+* Angry IP Scanner
+* Burp Suite
+
+---
+
+## Learning Resources
+
+* Cisco Networking Academy
+* TryHackMe Networking Fundamentals
+* Hack The Box Academy Networking Module
+* Professor Messer Network+ Videos
+
+---
+
+⭐ If these notes helped you, consider giving this repository a star.
