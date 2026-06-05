@@ -1,0 +1,235 @@
+# 🌐 Domain Name System (DNS) Notes
+
+## What is DNS?
+
+DNS (Domain Name System) is the phonebook of the Internet. It translates human-readable domain names (e.g., `google.com`) into IP addresses (e.g., `142.250.183.14`) that computers use to identify each other on a network.
+
+---
+
+## Why DNS is Important
+
+* Eliminates the need to remember IP addresses.
+* Provides faster access to websites and services.
+* Supports email delivery and various Internet services.
+* Enables load balancing and redundancy.
+
+---
+
+## How DNS Works
+
+1. User enters a domain name in a browser.
+2. Browser checks its local DNS cache.
+3. If not found, the request is sent to a DNS Resolver.
+4. Resolver queries:
+
+   * Root DNS Server
+   * Top-Level Domain (TLD) Server
+   * Authoritative DNS Server
+5. Authoritative server returns the IP address.
+6. Browser connects to the web server using the IP address.
+
+---
+
+## DNS Hierarchy
+
+```text
+Root DNS Server (.)
+        │
+        ▼
+Top-Level Domain (TLD)
+(.com, .org, .net, .edu)
+        │
+        ▼
+Authoritative DNS Server
+        │
+        ▼
+Domain IP Address
+```
+
+---
+
+## Common DNS Record Types
+
+### A Record
+
+Maps a domain name to an IPv4 address.
+
+Example:
+
+```text
+example.com → 192.168.1.1
+```
+
+### AAAA Record
+
+Maps a domain name to an IPv6 address.
+
+Example:
+
+```text
+example.com → 2001:db8::1
+```
+
+### CNAME Record
+
+Creates an alias for another domain.
+
+Example:
+
+```text
+www.example.com → example.com
+```
+
+### MX Record
+
+Specifies mail servers responsible for receiving emails.
+
+Example:
+
+```text
+example.com → mail.example.com
+```
+
+### NS Record
+
+Specifies the authoritative name servers for a domain.
+
+### TXT Record
+
+Stores text information such as SPF, DKIM, and domain verification data.
+
+### PTR Record
+
+Used for reverse DNS lookups (IP address → Domain Name).
+
+---
+
+## Types of DNS Servers
+
+### Recursive Resolver
+
+Receives DNS queries from clients and finds the requested IP address.
+
+### Root Name Server
+
+Directs requests to the correct TLD server.
+
+### TLD Name Server
+
+Manages domain extensions such as `.com`, `.org`, and `.net`.
+
+### Authoritative Name Server
+
+Contains the actual DNS records for a domain.
+
+---
+
+## DNS Query Types
+
+### Recursive Query
+
+The DNS server returns the final answer or an error.
+
+### Iterative Query
+
+The DNS server returns the best answer it currently has.
+
+### Non-Recursive Query
+
+The answer is already available in cache.
+
+---
+
+## DNS Caching
+
+DNS caching stores previously resolved domain names to improve performance and reduce lookup times.
+
+Benefits:
+
+* Faster browsing
+* Reduced network traffic
+* Lower DNS server load
+
+---
+
+## DNS Security Threats
+
+### DNS Spoofing (Cache Poisoning)
+
+Attackers inject fake DNS records to redirect users to malicious websites.
+
+### DNS Tunneling
+
+Attackers use DNS traffic to transfer data covertly.
+
+### DNS Amplification Attack
+
+A type of DDoS attack that exploits DNS servers to overwhelm a target.
+
+### Fast Flux
+
+Frequently changing IP addresses to hide malicious infrastructure.
+
+---
+
+## Useful DNS Commands
+
+### Windows
+
+```cmd
+ipconfig /displaydns
+ipconfig /flushdns
+nslookup google.com
+```
+
+### Linux
+
+```bash
+dig google.com
+host google.com
+nslookup google.com
+systemd-resolve --statistics
+```
+
+---
+
+## Popular Public DNS Servers
+
+| Provider       | Primary DNS    | Secondary DNS  |
+| -------------- | -------------- | -------------- |
+| Google DNS     | 8.8.8.8        | 8.8.4.4        |
+| Cloudflare DNS | 1.1.1.1        | 1.0.0.1        |
+| OpenDNS        | 208.67.222.222 | 208.67.220.220 |
+
+---
+
+## DNS in Cybersecurity
+
+DNS is frequently monitored during security investigations because it can reveal:
+
+* Command and Control (C2) communication
+* Malware activity
+* Data exfiltration attempts
+* Phishing domains
+* Suspicious network behavior
+
+Security professionals often analyze DNS logs to detect threats and investigate incidents.
+
+---
+
+## Key Takeaways
+
+* DNS stands for Domain Name System.
+* Converts domain names into IP addresses.
+* Uses a hierarchical structure of DNS servers.
+* Common records include A, AAAA, CNAME, MX, NS, TXT, and PTR.
+* DNS plays a critical role in networking and cybersecurity.
+* Monitoring DNS traffic helps detect cyber threats.
+
+### Quick Memory Trick
+
+```text
+Domain Name → DNS → IP Address → Server
+```
+
+Without DNS, users would need to remember IP addresses instead of website names.
