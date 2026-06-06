@@ -1,0 +1,322 @@
+# Nmap Cheat Sheet for GitHub
+
+## What is Nmap?
+
+Nmap (Network Mapper) is an open-source tool used for network discovery, port scanning, service enumeration, OS detection, and security auditing.
+
+---
+
+## Basic Syntax
+
+```bash
+nmap [options] <target>
+```
+
+Example:
+
+```bash
+nmap 192.168.1.1
+```
+
+---
+
+## Host Discovery
+
+### Ping Scan
+
+```bash
+nmap -sn 192.168.1.0/24
+```
+
+### Skip Host Discovery
+
+```bash
+nmap -Pn 192.168.1.1
+```
+
+---
+
+## Port Scanning
+
+### Scan Default Ports
+
+```bash
+nmap 192.168.1.1
+```
+
+### Scan Specific Port
+
+```bash
+nmap -p 80 192.168.1.1
+```
+
+### Scan Multiple Ports
+
+```bash
+nmap -p 22,80,443 192.168.1.1
+```
+
+### Scan Port Range
+
+```bash
+nmap -p 1-1000 192.168.1.1
+```
+
+### Scan All Ports
+
+```bash
+nmap -p- 192.168.1.1
+```
+
+---
+
+## Scan Types
+
+### SYN Scan (Stealth)
+
+```bash
+sudo nmap -sS 192.168.1.1
+```
+
+### TCP Connect Scan
+
+```bash
+nmap -sT 192.168.1.1
+```
+
+### UDP Scan
+
+```bash
+sudo nmap -sU 192.168.1.1
+```
+
+### FIN Scan
+
+```bash
+sudo nmap -sF 192.168.1.1
+```
+
+### NULL Scan
+
+```bash
+sudo nmap -sN 192.168.1.1
+```
+
+### Xmas Scan
+
+```bash
+sudo nmap -sX 192.168.1.1
+```
+
+---
+
+## Service Enumeration
+
+```bash
+nmap -sV 192.168.1.1
+```
+
+---
+
+## Operating System Detection
+
+```bash
+sudo nmap -O 192.168.1.1
+```
+
+---
+
+## Aggressive Scan
+
+```bash
+sudo nmap -A 192.168.1.1
+```
+
+Includes:
+
+* OS Detection
+* Service Detection
+* NSE Scripts
+* Traceroute
+
+---
+
+## Nmap Scripting Engine (NSE)
+
+### Default Scripts
+
+```bash
+nmap -sC 192.168.1.1
+```
+
+### Specific Script
+
+```bash
+nmap --script=http-title 192.168.1.1
+```
+
+### Vulnerability Scan
+
+```bash
+nmap --script vuln 192.168.1.1
+```
+
+---
+
+## Timing Options
+
+```bash
+nmap -T4 192.168.1.1
+```
+
+Timing Levels:
+
+```text
+-T0 = Paranoid
+-T1 = Sneaky
+-T2 = Polite
+-T3 = Normal
+-T4 = Aggressive
+-T5 = Insane
+```
+
+---
+
+## Output Formats
+
+### Save Normal Output
+
+```bash
+nmap -oN scan.txt 192.168.1.1
+```
+
+### Save XML Output
+
+```bash
+nmap -oX scan.xml 192.168.1.1
+```
+
+### Save All Formats
+
+```bash
+nmap -oA scan 192.168.1.1
+```
+
+---
+
+## Useful Commands
+
+### Quick Scan
+
+```bash
+nmap -T4 -F 192.168.1.1
+```
+
+### Full Port Scan
+
+```bash
+nmap -p- -T4 192.168.1.1
+```
+
+### Full Scan with Version Detection
+
+```bash
+nmap -p- -sV -T4 192.168.1.1
+```
+
+### Full Enumeration
+
+```bash
+sudo nmap -A -p- 192.168.1.1
+```
+
+---
+
+## Common NSE Scripts
+
+### HTTP Title
+
+```bash
+nmap --script http-title <target>
+```
+
+### HTTP Headers
+
+```bash
+nmap --script http-headers <target>
+```
+
+### SMB Enumeration
+
+```bash
+nmap --script smb-enum-shares <target>
+```
+
+### FTP Anonymous Login Check
+
+```bash
+nmap --script ftp-anon <target>
+```
+
+### SSH Enumeration
+
+```bash
+nmap --script ssh2-enum-algos <target>
+```
+
+---
+
+## Enumeration Workflow
+
+### 1. Discover Live Hosts
+
+```bash
+nmap -sn 192.168.1.0/24
+```
+
+### 2. Scan All Ports
+
+```bash
+nmap -p- 192.168.1.10
+```
+
+### 3. Detect Services
+
+```bash
+nmap -sV -p- 192.168.1.10
+```
+
+### 4. Run Default Scripts
+
+```bash
+nmap -sC -sV 192.168.1.10
+```
+
+### 5. Full Enumeration
+
+```bash
+sudo nmap -A -p- 192.168.1.10
+```
+
+---
+
+## Quick Reference
+
+| Flag | Description         |
+| ---- | ------------------- |
+| -sn  | Host Discovery      |
+| -Pn  | Skip Host Discovery |
+| -sS  | SYN Scan            |
+| -sT  | TCP Connect Scan    |
+| -sU  | UDP Scan            |
+| -sV  | Service Detection   |
+| -O   | OS Detection        |
+| -A   | Aggressive Scan     |
+| -sC  | Default Scripts     |
+| -p-  | Scan All Ports      |
+| -T4  | Fast Scan           |
+| -oN  | Normal Output       |
+| -oX  | XML Output          |
+| -oA  | All Output Formats  |
+
+⚠️ Use Nmap only on systems you own or have explicit permission to test.
