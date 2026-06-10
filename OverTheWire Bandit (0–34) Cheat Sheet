@@ -1,0 +1,688 @@
+
+
+## Connection
+
+```bash
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+```
+
+---
+
+# Bandit 0 → 1
+
+### Goal
+
+Read password from `readme`
+
+```bash
+ls
+cat readme
+```
+
+### Concept
+
+* File reading
+
+---
+
+# Bandit 1 → 2
+
+### Goal
+
+Read file named `-`
+
+```bash
+cat ./-
+```
+
+### Concept
+
+* Special filenames
+
+---
+
+# Bandit 2 → 3
+
+### Goal
+
+Read file containing spaces
+
+```bash
+cat "spaces in this filename"
+```
+
+### Concept
+
+* Escaping spaces
+
+---
+
+# Bandit 3 → 4
+
+### Goal
+
+Find hidden file
+
+```bash
+ls -la
+cat .hidden
+```
+
+### Concept
+
+* Hidden files
+
+---
+
+# Bandit 4 → 5
+
+### Goal
+
+Find human-readable file
+
+```bash
+file ./*
+cat <file>
+```
+
+### Concept
+
+* File types
+
+---
+
+# Bandit 5 → 6
+
+### Goal
+
+Find file with specific size
+
+```bash
+find . -type f -size 1033c
+```
+
+### Concept
+
+* File searching
+
+---
+
+# Bandit 6 → 7
+
+### Goal
+
+Find file owned by specific user/group
+
+```bash
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+```
+
+### Concept
+
+* Ownership
+* Error redirection
+
+---
+
+# Bandit 7 → 8
+
+### Goal
+
+Find line containing keyword
+
+```bash
+grep millionth data.txt
+```
+
+### Concept
+
+* grep
+
+---
+
+# Bandit 8 → 9
+
+### Goal
+
+Find unique line
+
+```bash
+sort data.txt | uniq -u
+```
+
+### Concept
+
+* sort
+* uniq
+
+---
+
+# Bandit 9 → 10
+
+### Goal
+
+Extract readable strings
+
+```bash
+strings data.txt | grep "="
+```
+
+### Concept
+
+* strings
+
+---
+
+# Bandit 10 → 11
+
+### Goal
+
+Decode Base64
+
+```bash
+base64 -d data.txt
+```
+
+### Concept
+
+* Base64
+
+---
+
+# Bandit 11 → 12
+
+### Goal
+
+ROT13 encoded text
+
+```bash
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+```
+
+### Concept
+
+* ROT13
+
+---
+
+# Bandit 12 → 13
+
+### Goal
+
+Repeated extraction/compression
+
+```bash
+xxd -r data.txt > file
+file file
+```
+
+Use:
+
+```bash
+gzip -d
+bzip2 -d
+tar -xf
+```
+
+### Concept
+
+* Compression formats
+* Hex dumps
+
+---
+
+# Bandit 13 → 14
+
+### Goal
+
+Login using SSH key
+
+```bash
+ssh -i sshkey.private bandit14@localhost -p 2220
+```
+
+### Concept
+
+* SSH private keys
+
+---
+
+# Bandit 14 → 15
+
+### Goal
+
+Submit password via netcat
+
+```bash
+nc localhost 30000
+```
+
+### Concept
+
+* Netcat
+
+---
+
+# Bandit 15 → 16
+
+### Goal
+
+SSL connection
+
+```bash
+openssl s_client -connect localhost:30001
+```
+
+### Concept
+
+* SSL/TLS
+
+---
+
+# Bandit 16 → 17
+
+### Goal
+
+Find correct SSL service
+
+```bash
+nmap -sV localhost -p 31000-32000
+```
+
+### Concept
+
+* Port scanning
+
+---
+
+# Bandit 17 → 18
+
+### Goal
+
+Compare files
+
+```bash
+diff passwords.old passwords.new
+```
+
+### Concept
+
+* diff
+
+---
+
+# Bandit 18 → 19
+
+### Goal
+
+Bypass logout shell
+
+```bash
+ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme
+```
+
+### Concept
+
+* Remote command execution
+
+---
+
+# Bandit 19 → 20
+
+### Goal
+
+Use SUID binary
+
+```bash
+./bandit20-do cat /etc/bandit_pass/bandit20
+```
+
+### Concept
+
+* SUID
+
+---
+
+# Bandit 20 → 21
+
+### Goal
+
+Use listening port
+
+```bash
+nc -lvp 4444
+./suconnect 4444
+```
+
+### Concept
+
+* Client/server communication
+
+---
+
+# Bandit 21 → 22
+
+### Goal
+
+Cron job inspection
+
+```bash
+cat /etc/cron.d/*
+```
+
+### Concept
+
+* Cron jobs
+
+---
+
+# Bandit 22 → 23
+
+### Goal
+
+Analyze cron scripts
+
+```bash
+cat /usr/bin/*
+```
+
+### Concept
+
+* Script auditing
+
+---
+
+# Bandit 23 → 24
+
+### Goal
+
+Create executable script
+
+```bash
+mkdir /tmp/mydir
+chmod 777 script.sh
+```
+
+### Concept
+
+* Scheduled execution
+
+---
+
+# Bandit 24 → 25
+
+### Goal
+
+Brute-force PIN
+
+```bash
+for i in {0000..9999}
+do
+echo "password $i"
+done
+```
+
+### Concept
+
+* Brute forcing
+
+---
+
+# Bandit 25 → 26
+
+### Goal
+
+Escape restricted shell
+
+```bash
+v
+:set shell=/bin/bash
+:shell
+```
+
+### Concept
+
+* vim escape
+
+---
+
+# Bandit 26 → 27
+
+### Goal
+
+Use SUID binary
+
+```bash
+./bandit27-do
+```
+
+### Concept
+
+* Privilege escalation
+
+---
+
+# Bandit 27 → 28
+
+### Goal
+
+Clone Git repository
+
+```bash
+git clone <repo>
+```
+
+### Concept
+
+* Git basics
+
+---
+
+# Bandit 28 → 29
+
+### Goal
+
+View previous commits
+
+```bash
+git log
+git show
+```
+
+### Concept
+
+* Git history
+
+---
+
+# Bandit 29 → 30
+
+### Goal
+
+Explore branches
+
+```bash
+git branch -a
+git checkout <branch>
+```
+
+### Concept
+
+* Git branches
+
+---
+
+# Bandit 30 → 31
+
+### Goal
+
+Explore tags
+
+```bash
+git tag
+git show <tag>
+```
+
+### Concept
+
+* Git tags
+
+---
+
+# Bandit 31 → 32
+
+### Goal
+
+Commit excluded file
+
+```bash
+git add -f key.txt
+git commit
+git push
+```
+
+### Concept
+
+* Git ignore bypass
+
+---
+
+# Bandit 32 → 33
+
+### Goal
+
+Escape uppercase shell
+
+```bash
+$0
+cat /etc/bandit_pass/bandit33
+```
+
+### Concept
+
+* Shell spawning
+
+---
+
+# Bandit 33 → 34
+
+### Goal
+
+Final challenge
+
+```bash
+cat /etc/bandit_pass/bandit34
+```
+
+### Concept
+
+* Review previous skills
+
+---
+
+# Useful Commands
+
+## File Enumeration
+
+```bash
+ls
+ls -la
+find
+file
+cat
+less
+```
+
+## Text Processing
+
+```bash
+grep
+sort
+uniq
+strings
+diff
+```
+
+## Networking
+
+```bash
+ssh
+nc
+telnet
+openssl
+nmap
+```
+
+## Archives
+
+```bash
+tar
+gzip
+gunzip
+bzip2
+xxd
+```
+
+## Git
+
+```bash
+git clone
+git log
+git show
+git branch
+git checkout
+git tag
+git push
+```
+
+## Privilege Escalation
+
+```bash
+sudo -l
+find / -perm -4000
+```
+
+---
+
+# Skills Learned
+
+✅ Linux Fundamentals
+
+✅ File Permissions
+
+✅ Hidden Files
+
+✅ Text Processing
+
+✅ Networking
+
+✅ SSH
+
+✅ SSL/TLS
+
+✅ Port Scanning
+
+✅ Cron Jobs
+
+✅ SUID Binaries
+
+✅ Git Basics
+
+✅ Git Forensics
+
+✅ Basic Privilege Escalation
+
+✅ Enumeration Techniques
+
+---
+
+## Progress
+
+```text
+[✓] Bandit 0–10
+[✓] Bandit 11–20
+[✓] Bandit 21–30
+[✓] Bandit 31–34
+```
+
+**Happy Hacking!**
